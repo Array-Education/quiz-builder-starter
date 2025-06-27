@@ -39,7 +39,16 @@ This starter includes basic CRUD functionality for questions. **Your task is to 
 - ✅ Supabase database integration
 
 ### Your Interview Task 🎯
-Implement AI-powered question generation using the OpenAI API. The starter code includes basic CRUD functionality - your task is to add the ability to generate questions with AI.
+During the interview, you'll enhance this quiz builder app by adding AI-powered question generation functionality.
+
+User Story: As a teacher, I want to generate quiz questions using AI so that I can quickly create relevant questions for my students based on a topic and difficulty level.
+
+Feature Requirements:
+- Teachers should be able to generate questions by providing a topic and difficulty level
+- The AI should generate educationally appropriate quiz questions
+- Generated questions should be editable before saving
+
+The specific implementation approach is up to you - we want to see how you think about and solve the problem.
 
 ## 🗄️ Database Setup
 
