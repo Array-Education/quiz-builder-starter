@@ -10,32 +10,21 @@
 
 ### Phase 2: Core Implementation (25-30 minutes)
 
-#### Required Implementation
-1. **AI Generation API Endpoint** (15-20 minutes)
-   - Location: `src/app/api/questions/generate/route.ts`
-   - Accept `topic` and `difficulty` parameters
-   - Integrate with OpenAI API
-   - Store generated question in database
-   - Return the created question
-
-2. **UI Integration** (10-15 minutes)
-   - Enable the "Generate with AI" button in `QuestionForm.tsx`
-   - Add loading state during generation
-   - Handle success and error cases
-   - Display generated question in the list
+#### Task
+Implement AI-powered question generation using the OpenAI API. The candidate should determine the best approach for:
+- Backend API implementation
+- Frontend integration
+- Error handling and edge cases
+- User experience considerations
 
 #### Success Criteria
-- [ ] AI button works without errors
-- [ ] Loading state is shown during generation
-- [ ] Generated questions appear in the list
-- [ ] Error handling is implemented
-- [ ] Code follows TypeScript best practices
+- [ ] AI generation functionality works end-to-end
+- [ ] Appropriate error handling is implemented
+- [ ] User experience is considered
+- [ ] Code quality and TypeScript usage
 
 ### Phase 3: Extensions (5-10 minutes if time permits)
-- [ ] Add request duration logging
-- [ ] Implement batch question generation
-- [ ] Add caching for similar requests
-- [ ] Discuss rate limiting strategies
+Discuss potential enhancements and optimizations the candidate would consider for production use.
 
 ### Phase 4: Technical Discussion (10 minutes)
 - [ ] Schema evolution strategies
@@ -65,40 +54,13 @@
 - **Communication**: Explaining thought process
 - **Adaptability**: Handling unexpected challenges
 
-## Common Implementation Approaches
+## Implementation Notes
 
-### OpenAI Integration Options
-```typescript
-// Option 1: Simple completion
-const completion = await openai.chat.completions.create({
-  model: "gpt-3.5-turbo",
-  messages: [{ role: "user", content: prompt }],
-})
-
-// Option 2: With system prompt
-const completion = await openai.chat.completions.create({
-  model: "gpt-3.5-turbo",
-  messages: [
-    { role: "system", content: "You are a quiz question generator..." },
-    { role: "user", content: `Generate a ${difficulty} ${topic} question` }
-  ],
-})
-```
-
-### UI State Management
-```typescript
-// Loading state management
-const [generating, setGenerating] = useState(false)
-
-const handleAIGenerate = async () => {
-  setGenerating(true)
-  try {
-    // API call
-  } finally {
-    setGenerating(false)
-  }
-}
-```
+Observe how the candidate approaches:
+- API integration patterns
+- State management decisions
+- Error handling strategies
+- Code organization and structure
 
 ## Probing Questions
 
@@ -131,7 +93,6 @@ const handleAIGenerate = async () => {
 
 ### Process Red Flags
 - [ ] Not reading existing code patterns
-- [ ] Ignoring TODO comments and hints
 - [ ] Not testing the implementation
 - [ ] Poor communication of approach
 - [ ] Not asking clarifying questions
@@ -165,12 +126,12 @@ const handleAIGenerate = async () => {
 4. **Note edge cases**: Do they think about error scenarios?
 5. **Time management**: Keep track of progress vs time
 
-### For Candidates:
-1. **Read the code first**: Understand existing patterns
-2. **Start simple**: Get basic functionality working
-3. **Handle errors**: Always consider what can go wrong
-4. **Test as you go**: Verify each step works
-5. **Communicate**: Explain your thought process
+### General Interview Approach:
+- Understand the existing codebase
+- Plan the implementation approach
+- Consider error scenarios and edge cases
+- Test functionality as you build
+- Communicate throughout the process
 
 ## Follow-up Tasks (if time permits)
 

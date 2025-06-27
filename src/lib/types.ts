@@ -21,8 +21,6 @@ export interface QuestionFormData {
   question_text: string
 }
 
-// TODO: Add AI generation types here
-// Consider: What parameters will the AI generation endpoint need?
 export interface GenerateQuestionRequest {
   topic: string
   difficulty: Difficulty

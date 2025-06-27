@@ -15,8 +15,8 @@ Successfully created a comprehensive Teaching Simulator interview starter reposi
 - ✅ **Developer Experience**: ESLint, Prettier, TypeScript strict mode
 
 ### Interview Hooks (Complete)
-- ✅ **AI Generation Endpoint**: Placeholder with TODO comments
-- ✅ **Strategic TODOs**: 15+ evaluation points throughout codebase
+- ✅ **AI Generation Endpoint**: Placeholder for implementation
+- ✅ **Clean Architecture**: Clear structure for candidates to work with
 - ✅ **Documentation**: Comprehensive README and interview guide
 - ✅ **Setup Scripts**: 5-minute automated setup process
 
@@ -81,11 +81,11 @@ quiz-builder-starter/
 5. **UI/UX**: Professional design with loading states
 
 ### What Candidates Build (Core Evaluation)
-1. **OpenAI Integration**: API client setup and prompt engineering
-2. **AI Response Handling**: Parsing and validation of generated content
-3. **Database Storage**: Storing AI-generated questions
-4. **UI Integration**: Enabling AI button with proper states
-5. **Error Scenarios**: Handling API failures and edge cases
+Candidates implement AI-powered question generation, demonstrating their approach to:
+- API integration and third-party service usage
+- Data validation and error handling
+- Frontend-backend integration
+- User experience considerations
 
 ## 📊 Technical Specifications
 
@@ -129,7 +129,7 @@ quiz-builder-starter/
 5. Run `npm run dev`
 
 ### Interview Effectiveness
-- **Clear Task Definition**: Specific AI generation implementation
+- **Open-ended Task**: AI generation with room for creativity
 - **Realistic Scope**: 25-30 minutes for core functionality
 - **Multiple Skill Areas**: Full-stack, AI integration, error handling
 - **Extension Opportunities**: Advanced features for strong candidates

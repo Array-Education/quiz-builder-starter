@@ -39,22 +39,7 @@ This starter includes basic CRUD functionality for questions. **Your task is to 
 - ✅ Supabase database integration
 
 ### Your Interview Task 🎯
-Implement AI question generation by adding:
-
-1. **AI Generation API** (`/api/questions/generate`)
-   - Accept topic and difficulty parameters
-   - Call OpenAI to generate questions
-   - Store generated questions in database
-
-2. **UI Integration**
-   - Enable the "Generate with AI" button
-   - Add loading states
-   - Handle errors gracefully
-
-3. **Optional Enhancements** (if time permits)
-   - Request duration logging
-   - Error tracking hooks
-   - Batch generation
+Implement AI-powered question generation using the OpenAI API. The starter code includes basic CRUD functionality - your task is to add the ability to generate questions with AI.
 
 ## 🗄️ Database Setup
 
@@ -131,26 +116,13 @@ npm run supabase:studio  # Open Supabase Studio dashboard
 npm run supabase:reset   # Reset database (run migrations + seed)
 ```
 
-## 🎯 Interview Evaluation Points
+## 🎯 What We're Looking For
 
-### Core Implementation (Required)
-- [ ] OpenAI API integration
-- [ ] Database storage of generated questions
-- [ ] Error handling
-- [ ] Loading states
-
-### Code Quality
-- [ ] TypeScript usage
-- [ ] Error boundaries
-- [ ] Input validation
-- [ ] Clean, readable code
-
-### Discussion Points
-- Schema evolution strategies
-- Scaling considerations
-- Rate limiting approaches
-- Cost optimization
-- Security best practices
+We'll evaluate your approach to:
+- Problem solving and implementation decisions
+- Code quality and organization
+- Error handling and edge cases
+- User experience considerations
 
 ## 🔍 Key Files to Examine
 
@@ -161,48 +133,14 @@ npm run supabase:reset   # Reset database (run migrations + seed)
 | `src/lib/types.ts` | AI generation types | Ready |
 | `src/lib/validations.ts` | Request validation | Ready |
 
-## 💡 Implementation Hints
 
-### OpenAI Integration
-```typescript
-import OpenAI from 'openai'
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
-
-// Craft a good prompt for question generation
-const prompt = `Generate a ${difficulty} ${topic} question...`
-```
-
-### Error Handling Considerations
-- OpenAI rate limits
-- Network timeouts
-- Invalid API responses
-- Database connection issues
-
-### UI/UX Considerations
-- Loading states (generation takes 2-5s)
-- Optimistic updates
-- Error messages
-- Form validation
-
-## 🚨 Common Pitfalls to Avoid
-
-1. **Missing error handling** - Always wrap API calls in try/catch
-2. **No loading states** - Users need feedback during generation
-3. **Ignoring TypeScript** - Use the provided types
-4. **Poor prompts** - Craft specific, clear prompts for OpenAI
-5. **No validation** - Validate both input and AI responses
 
 ## 🎉 Success Criteria
 
 Your implementation is successful when:
-- [ ] AI generation button works
-- [ ] Generated questions appear in the list
-- [ ] Loading states are shown
-- [ ] Errors are handled gracefully
-- [ ] Code follows TypeScript best practices
+- [ ] Users can generate questions using AI
+- [ ] Generated questions are saved and displayed
+- [ ] The application handles various scenarios appropriately
 
 ## 📝 Environment Variables
 
@@ -217,10 +155,9 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 ## 🤝 Getting Help
 
-- Check the TODO comments in the code for guidance
-- Use the browser dev tools to debug API calls
-- The existing manual question creation shows the expected data flow
-- Sample questions are pre-loaded to test the UI
+- Feel free to ask questions about the requirements
+- The existing code shows how manual question creation works
+- Sample questions are pre-loaded in the database
 
 ---
 

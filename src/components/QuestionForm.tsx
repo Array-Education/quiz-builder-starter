@@ -110,8 +110,6 @@ export function QuestionForm({ onSubmit, loading = false }: QuestionFormProps) {
             Create Question
           </Button>
           
-          {/* TODO: Add AI generation button here */}
-          {/* Consider: How would you handle the AI generation flow? */}
           <Button
             type="button"
             variant="outline"
@@ -123,11 +121,6 @@ export function QuestionForm({ onSubmit, loading = false }: QuestionFormProps) {
         </div>
       </form>
 
-      <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
-        <p className="text-sm text-blue-700">
-          💡 <strong>Interview Task:</strong> Implement AI-powered question generation using the OpenAI API.
-        </p>
-      </div>
     </div>
   )
 }

@@ -98,21 +98,11 @@ npm run supabase:stop
 - Try `docker system prune` if you have old containers
 - Check Docker logs: `docker logs <container-name>`
 
-## Interview Development
+## Development Tips
 
-For the interview task, you'll be working with:
-
-1. **API Route**: `src/app/api/questions/generate/route.ts`
-   - Implement OpenAI integration here
-   - Store generated questions in the database
-
-2. **Frontend**: `src/components/QuestionForm.tsx`
-   - Enable the "Generate with AI" button
-   - Add loading states and error handling
-
-3. **Testing**: Use Supabase Studio to verify data
-   - Check that AI-generated questions appear in the `questions` table
-   - Verify the data matches your TypeScript types
+- Use Supabase Studio at http://127.0.0.1:54323 to view and manage your database
+- The local environment provides the same features as the cloud version
+- All changes to the database are local and can be reset with `npm run supabase:reset`
 
 ## Benefits of Local Development
 

@@ -19,8 +19,6 @@ export const CreateQuestionSchema = z.object({
 
 export const QuestionFormSchema = CreateQuestionSchema
 
-// TODO: Add AI generation validation schema here
-// Consider: What validation rules should apply to AI generation requests?
 export const GenerateQuestionSchema = z.object({
   topic: z.string().min(1, 'Topic is required').max(255, 'Topic must be less than 255 characters'),
   difficulty: DifficultySchema,
