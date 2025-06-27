@@ -58,19 +58,34 @@ Implement AI question generation by adding:
 
 ## 🗄️ Database Setup
 
-### Option A: Use Provided Supabase Project
-The `.env.example` includes a demo Supabase project URL. Just add your OpenAI API key.
-
-### Option B: Local Setup with Docker
+### Option A: Local Development with Supabase CLI (Recommended)
 ```bash
-docker-compose up -d
-# Database will be available at localhost:5432
+# Start local Supabase stack
+npm run supabase:start
+
+# Open Supabase Studio dashboard
+npm run supabase:studio
+
+# Stop when done
+npm run supabase:stop
 ```
 
-### Option C: Your Own Supabase Project
+This provides the full Supabase stack locally:
+- PostgreSQL database at `127.0.0.1:54322`
+- API Gateway at `127.0.0.1:54321`
+- Studio Dashboard at `127.0.0.1:54323`
+- Email testing at `127.0.0.1:54324`
+
+### Option B: Use Cloud Supabase Project
 1. Create a project at [supabase.com](https://supabase.com)
 2. Run the migration in `supabase/migrations/001_initial.sql`
 3. Update `.env.local` with your project URL and anon key
+
+### Option C: Basic Docker (Not Recommended)
+```bash
+docker-compose --profile manual up -d
+# Basic PostgreSQL only at localhost:5433
+```
 
 ## 📁 Project Structure
 
@@ -98,12 +113,22 @@ src/
 
 ## 🔧 Available Scripts
 
+### Development
 ```bash
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run start    # Start production server
 npm run lint     # Run ESLint
 npm run test     # Run tests
+```
+
+### Supabase Local Development
+```bash
+npm run supabase:start   # Start local Supabase stack
+npm run supabase:stop    # Stop all Supabase services
+npm run supabase:status  # Check running services
+npm run supabase:studio  # Open Supabase Studio dashboard
+npm run supabase:reset   # Reset database (run migrations + seed)
 ```
 
 ## 🎯 Interview Evaluation Points

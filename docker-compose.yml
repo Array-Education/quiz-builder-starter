@@ -1,32 +1,45 @@
+# Docker Compose is no longer needed for local development!
+# 
+# This project now uses Supabase CLI for local development.
+# The CLI automatically manages all Docker containers for you.
+#
+# Quick start:
+# 1. npm run supabase:start    # Starts all Supabase services
+# 2. npm run supabase:studio   # Opens Supabase Studio
+# 3. npm run supabase:stop     # Stops all services
+#
+# Services provided by Supabase CLI:
+# - PostgreSQL database
+# - Supabase API Gateway  
+# - Supabase Studio (Dashboard)
+# - Email testing (Inbucket)
+# - Edge Functions runtime
+# - Realtime subscriptions
+#
+# All services are configured automatically with proper networking,
+# authentication, and the latest Supabase features.
+#
+# If you still want to use plain Docker Compose for some reason,
+# here's a basic PostgreSQL setup:
+
 version: '3.8'
 
 services:
+  # Basic PostgreSQL (not recommended - use Supabase CLI instead)
   postgres:
     image: postgres:15
-    container_name: quiz_builder_postgres
+    container_name: quiz_builder_postgres_basic
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"  # Different port to avoid conflicts with Supabase CLI
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./supabase/migrations:/docker-entrypoint-initdb.d
-
-  # Optional: Supabase local development
-  # Uncomment if you want full Supabase local setup
-  # supabase:
-  #   image: supabase/supabase:latest
-  #   ports:
-  #     - "54321:8000"
-  #   environment:
-  #     POSTGRES_HOST: postgres
-  #     POSTGRES_DB: postgres
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #   depends_on:
-  #     - postgres
+    profiles:
+      - manual  # Only starts with: docker-compose --profile manual up
 
 volumes:
   postgres_data:
