@@ -40,6 +40,7 @@ export async function getChatGPTModelQuestions(
 			return mappedMessageg
 		})
 		.catch((error) => {
+			console.error('Error fetching questions from OpenAI:', error)
 			throw new Error('Failed to fetch questions from OpenAI')
 		})
 }

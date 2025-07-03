@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { Difficulty, CreateQuestionRequest, chatGPTModelCompletionRequest, chatGPTModel, Question } from './types'
+import { Difficulty, CreateQuestionRequest, chatGPTModelCompletionRequest, chatGPTModel } from './types'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
