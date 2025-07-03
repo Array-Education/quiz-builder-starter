@@ -69,15 +69,14 @@ export function QuestionForm({
 		try {
 			setSubmitError(null)
 			const {data} = validation
-      setAIGenerationButtonDisabled(true)
-			await onMessagesGeneratedWithAI(data).catch((error) => {
-        setSubmitError(error instanceof Error ? error.message : 'An error occurred while generating questions')
-      })
+			setAIGenerationButtonDisabled(true)
+			await onMessagesGeneratedWithAI(data)
 			reset()
 			setGeneratedWithAIButtonVisible(true)
-      setAIGenerationButtonDisabled(false)
 		} catch (error) {
-			setSubmitError(error instanceof Error ? error.message : 'An error occurred')
+			setSubmitError(error instanceof Error ? error.message : 'An error occurred while generating questions')
+		} finally {
+			setAIGenerationButtonDisabled(false)
 		}
 	}
 

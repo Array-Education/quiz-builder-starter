@@ -1,37 +1,44 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { Difficulty, CreateQuestionRequest, chatGPTModelCompletionRequest, chatGPTModel } from './types'
+import { Difficulty, ChatGPTModelCompletionRequest, ChatGPTModel } from './types'
+import { CreateQuestionData } from './validations'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
 export function formatPrompt(
-	model: chatGPTModel = 'gpt-4.1',
+	model: ChatGPTModel = 'gpt-4.1',
 	topic: string,
 	difficulty: Difficulty
-): chatGPTModelCompletionRequest {
+): ChatGPTModelCompletionRequest {
 	return {
 		model,
 		messages: [
 			{
-				role: 'developer',
-				content: `${topic}. If we were to make a scale from easy to medium to hard, give me an answer on a ${difficulty} level. Send the list of questions separated by;`,
+				role: 'system',
+				content: `You are an expert question generator. Create 5-10 ${difficulty} level questions about ${topic}. Format your response as a semicolon-separated list of questions. Start with 'Questions:' followed by the questions.`,
 			},
 		],
 	}
 }
 
 export function formatChatGPTResponse(response: string): string[] {
+	if (!response || typeof response !== 'string') {
+		return []
+	}
+	
 	const formattedChatGPTResponse = response
 		.split(';')
 		.map((question) => question.trim())
 		.filter((question) => question.length > 0)
-		.slice(1)
+		.filter((question) => !question.toLowerCase().includes('questions:'))
+		.slice(0, 5)
+	
 	return formattedChatGPTResponse
 }
 
-export function clientGenerateQuestionsWithAI(questionRequest: CreateQuestionRequest) {
+export function clientGenerateQuestionsWithAI(questionRequest: CreateQuestionData) {
 	return fetch('/api/questions/generate', {
 		method: 'POST',
 		headers: {
@@ -57,7 +64,7 @@ export function clientGenerateQuestionsWithAI(questionRequest: CreateQuestionReq
 		})
 }
 
-export function createQuestions(data: Array<CreateQuestionRequest>) {
+export function createQuestions(data: Array<CreateQuestionData>) {
 	return fetch('/api/questions', {
 		method: 'POST',
 		headers: {
@@ -77,4 +84,9 @@ export function createQuestions(data: Array<CreateQuestionRequest>) {
 			}
 			return data
 		})
+}
+
+export function truncateText(text: string, maxLength: number): string {
+  if (!text || text.length <= maxLength) return text
+  return `${text.substring(0, maxLength)}...`
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { Question } from '@/lib/types'
+import { truncateText } from '@/lib/utils'
 
 interface QuestionListProps {
   questions: Question[]
@@ -105,10 +106,7 @@ export function QuestionList({ questions, loading = false, error, notSavedQuesti
                   </td>
                   <td className="px-6 py-4">
                     <div className="text-sm text-gray-900 max-w-md">
-                      {question?.question_text?.length > 100 
-                        ? `${question?.question_text?.substring(0, 100)}...`
-                        : question.question_text
-                      }
+                      {truncateText(question.question_text, 100)}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -137,10 +135,7 @@ export function QuestionList({ questions, loading = false, error, notSavedQuesti
                   </td>
                   <td className="px-6 py-4">
                     <div className="text-sm text-gray-900 max-w-md">
-                      {question?.question_text?.length > 100 
-                        ? `${question?.question_text?.substring(0, 100)}...`
-                        : question.question_text
-                      }
+                      {truncateText(question.question_text, 100)}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

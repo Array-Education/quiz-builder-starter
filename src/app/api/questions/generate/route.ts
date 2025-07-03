@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GenerateQuestionSchema } from '@/lib/validations'
-import { Question, ApiResponse, chatGPTModel } from '@/lib/types'
+import { Question, ApiResponse, ChatGPTModel } from '@/lib/types'
 import { formatPrompt } from '@/lib/utils'
 import { getChatGPTModelQuestions } from '@/lib/chatGPTHandler'
 
@@ -17,22 +17,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
 		}
 		const { topic, difficulty } = validationResult.data
 
-		const { messages, model } = formatPrompt(process.env.OPENAI_API_MODEL as chatGPTModel, topic, difficulty)
+		const { messages, model } = formatPrompt(process.env.OPENAI_API_MODEL as ChatGPTModel, topic, difficulty)
 
-		let questions: Question[] = []
-
-		return getChatGPTModelQuestions(model, messages, difficulty, topic)
-			.then((data) => {
-				questions = data
-				return NextResponse.json({ data: questions }, { status: 200 })
-			})
-			.catch((error) => {
-				console.error('Error generating questions with AI:', error)
-				return NextResponse.json({ error: 'Service not available' }, { status: 503 })
-			})
-		//
+		const questions = await getChatGPTModelQuestions(model, messages, difficulty, topic)
+		return NextResponse.json({ data: questions }, { status: 200 })
 	} catch (error) {
-		console.error('Error happened while doing POST request before GPT request', error)
-		return NextResponse.json({ error: 'Service not available' }, { status: 503 })
+		console.error('Error generating questions with AI:', error)
+		return NextResponse.json({ error: 'Failed to generate questions' }, { status: 500 })
 	}
 }

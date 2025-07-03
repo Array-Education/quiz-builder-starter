@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { QuestionList } from '@/components/QuestionList'
 import { QuestionForm } from '@/components/QuestionForm'
-import { Question, QuestionFormData } from '@/lib/types'
+import { Question } from '@/lib/types'
+import { QuestionFormData } from '@/lib/validations'
 import { createQuestions } from '@/lib/utils'
 import { clientGenerateQuestionsWithAI } from '@/lib/utils'
 
@@ -56,9 +57,9 @@ export default function Home() {
 	const handleCustomQuestionsCreation = async () => {
 		setSubmitting(true)
 		setLoading(true)
-		await handleCreateQuestion(questions)
+		await handleCreateQuestion(notSavedQuestions)
 			.then(() => {
-				setNotSavedQuestions([])
+				return setNotSavedQuestions([])
 			})
 			.catch((err) => {
 				setError(err instanceof Error ? err.message : 'An error occurred while saving questions')
