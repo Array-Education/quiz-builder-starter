@@ -7,7 +7,6 @@ import { getChatGPTModelQuestions } from '@/lib/chatGPTHandler'
 export async function POST(request: NextRequest): Promise<NextResponse<ApiResponse<Question[]>>> {
 	try {
 		const body = await request.json()
-		console.log('Received request body:', body)
 		// Validate request body
 		const validationResult = GenerateQuestionSchema.safeParse(body)
 		if (!validationResult.success) {
@@ -27,11 +26,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
 				questions = data
 				return NextResponse.json({ data: questions }, { status: 200 })
 			})
-			.catch(() => {
+			.catch((error) => {
+				console.error('Error generating questions with AI:', error)
 				return NextResponse.json({ error: 'Service not available' }, { status: 503 })
 			})
 		//
 	} catch (error) {
+		console.error('Error happened while doing POST request before GPT request', error)
 		return NextResponse.json({ error: 'Service not available' }, { status: 503 })
 	}
 }
