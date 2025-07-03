@@ -21,10 +21,6 @@ export interface QuestionFormData {
   question_text: string
 }
 
-export interface GenerateQuestionRequest {
-  topic: string
-  difficulty: Difficulty
-}
 
 export interface ApiResponse<T> {
   data?: T

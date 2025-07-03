@@ -86,23 +86,12 @@ docker-compose --profile manual up -d
 ```
 src/
 ├── app/
-│   ├── api/questions/
-│   │   ├── route.ts          # GET/POST endpoints (✅ implemented)
-│   │   └── generate/
-│   │       └── route.ts      # 🎯 Your task: AI generation
+│   ├── api/questions/        # API endpoints
 │   ├── layout.tsx            # Root layout
 │   └── page.tsx              # Main page
-├── components/
-│   ├── Button.tsx            # Reusable button component
-│   ├── QuestionForm.tsx      # Form with AI generation placeholder
-│   └── QuestionList.tsx      # Responsive question table
-├── lib/
-│   ├── supabase.ts           # Database client
-│   ├── types.ts              # TypeScript interfaces
-│   ├── validations.ts        # Zod schemas
-│   └── utils.ts              # Utility functions
-└── __tests__/
-    └── Button.test.tsx       # Example test
+├── components/               # React components
+├── lib/                      # Utilities and configuration
+└── __tests__/               # Test files
 ```
 
 ## 🔧 Available Scripts
@@ -133,16 +122,12 @@ We'll evaluate your approach to:
 - Error handling and edge cases
 - User experience considerations
 
-## 🔍 Key Files to Examine
+## 🔍 Getting Started
 
-| File | Purpose | Status |
-|------|---------|---------|
-| `src/app/api/questions/generate/route.ts` | 🎯 **Your main task** | TODO |
-| `src/components/QuestionForm.tsx` | UI integration point | Needs AI button |
-| `src/lib/types.ts` | AI generation types | Ready |
-| `src/lib/validations.ts` | Request validation | Ready |
-
-
+Explore the existing codebase to understand:
+- How questions are currently created and stored
+- The database schema and API structure
+- Available UI components and styling patterns
 
 ## 🎉 Success Criteria
 

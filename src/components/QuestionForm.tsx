@@ -101,24 +101,13 @@ export function QuestionForm({ onSubmit, loading = false }: QuestionFormProps) {
           </div>
         )}
 
-        <div className="flex gap-3">
-          <Button
-            type="submit"
-            loading={isSubmitting || loading}
-            disabled={isSubmitting || loading}
-          >
-            Create Question
-          </Button>
-          
-          <Button
-            type="button"
-            variant="outline"
-            disabled
-            className="opacity-50 cursor-not-allowed"
-          >
-            Generate with AI (Coming Soon)
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          loading={isSubmitting || loading}
+          disabled={isSubmitting || loading}
+        >
+          Create Question
+        </Button>
       </form>
 
     </div>
