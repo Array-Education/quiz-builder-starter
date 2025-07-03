@@ -171,3 +171,10 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ---
 
 **Good luck! 🚀 Show us how you approach full-stack development with AI integration.**
+
+
+# what else could be done? 
+1. edition/deletion of single questions, both saved and those which are only display in UI
+2. Pagination
+3. extended table with more metadata about user and chatGPT response
+4. logging and exectuion time

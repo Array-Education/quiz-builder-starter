@@ -17,6 +17,8 @@ export const CreateQuestionSchema = z.object({
   question_text: z.string().min(1, 'Question text is required').max(2000, 'Question must be less than 2000 characters'),
 })
 
+export const CreateQuestionsSchema = z.array(CreateQuestionSchema)
+
 export const QuestionFormSchema = CreateQuestionSchema
 
 export const GenerateQuestionSchema = z.object({
@@ -27,3 +29,4 @@ export const GenerateQuestionSchema = z.object({
 export type QuestionFormData = z.infer<typeof QuestionFormSchema>
 export type CreateQuestionData = z.infer<typeof CreateQuestionSchema>
 export type GenerateQuestionData = z.infer<typeof GenerateQuestionSchema>
+export type CreateQuestionsData = z.infer<typeof CreateQuestionsSchema>
